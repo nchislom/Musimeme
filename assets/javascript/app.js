@@ -2310,16 +2310,7 @@ var parseImages = function(response) {
     
 }
 
-// Example Image Build
-/* 
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <p class="card-text">Rating: G</p>
-    </div>
-</div>
-*/
-
+// GIF Generation Function
 var generateGifs = function(object) {
     for(var i = 0; i<object.data.length; i++) {
         
@@ -2349,31 +2340,16 @@ var generateGifs = function(object) {
     }
 }
 
-// Rating Example
-// JSON.data[i].rating
-
-// Image (Animated) Example
-// JSON.data[i].images.fixed_height
-
-// Image (Still) Example
-// JSON.data[i].images.fixed_height_still
-
-
 // QUERY URL GENERATOR
 var getURL = function(searchTerm){
+    
     // Base URL
     var URL = "https://api.giphy.com/v1/gifs/search?api_key=0mPXs0Br3kSQLmpAzX0PK4FdfMO85PrK&q=";
-    // Append searchTerm, replacing spaces with '+' if occurring in searchTerm
-    URL += searchTerm.replace(/ /g, '+');
-    // Append search Result Size
-    URL += "&limit=10";
-    // Page Offset -- Leaving in place for future functionality
-    // URL += "&offset=0";
-    // Append rating
-    URL += "rating=G";
-    // Append language result filter
-    URL += "&lang=en";
-    // Return Built URL
+    
+    URL += searchTerm.replace(/ /g, '+');           // Append searchTerm, replacing spaces with +'s
+    URL += "&limit=10";                             // Append search Result Size
+    URL += "rating=G";                              // Append rating
+    URL += "&lang=en";                              // Append language result filter
     return URL;
 }
 
@@ -2394,14 +2370,35 @@ var generateButtons = function(){
 // SUBMIT BUTTON
 $("#submit").on("click", function(){
     var newTopic = $("#search-box").val();
-    if(!topics.includes(newTopic)){
+    if(!topics.includes(newTopic) && newTopic != ""){
         topics.push($("#search-box").val().trim());
         generateButtons();
     }
 });
 
-// START: Fires when document is ready
-$(document).ready(function(){
-    generateButtons();
+generateButtons();
+generateGifs(JSON);
+
+// GIF CLICK EVENT HANDLER
+$(".gif").on("click", function() {
+    console.log("Clicked!");
+    var state = $(this).attr("data-state");
+    if(state === "still"){
+        $(this).attr("data-state", "animate");
+        $(this).attr("src", $(this).attr("data-animate"));
+    } else {
+        $(this).attr("data-state", "still");
+        $(this).attr("src", $(this).attr("data-still"));
+    }
 });
 
+$(".btn-info").on("click", function(){
+    var queryURL = getURL($(this).attr("data-topic"));
+
+    $.ajax({
+        url: queryURL,
+        method: 'GET'
+    }).then(function(jsonData){
+
+    });
+});
