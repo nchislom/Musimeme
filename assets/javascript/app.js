@@ -1,14 +1,19 @@
 // Globals
 var topics = ['trumpet', 'synthesizer', 'clarinet', 'violin', 'saxophone', 'tabla', 'lute', 'cello', 'drums', 'bass'];
 var apiKey = "0mPXs0Br3kSQLmpAzX0PK4FdfMO85PrK";
-
+var currentOffset = 10;
+var currentTopic = "";
 // GIF GENERATOR
-var generateGifs = function(object) {
-    
-    // Empty div before appending new elements
-    $("#images").empty();
+var generateGifs = function(object, appendMore) {
 
-    // Gif/Div generation loop
+    // Empty div before appending new elements
+    if(!appendMore){
+        $("#images").empty();
+    } else if(appendMore){
+        $("#more-button-p").remove();
+    }
+
+    // Gif generation loop
     for(let i = 0; i<object.data.length; i++) {
         
         let newCard = $("<div>").attr({
@@ -36,15 +41,12 @@ var generateGifs = function(object) {
         $("#images").append(newCard);
     }
 
-    $("#images").append(
-        $("<p>")
-        .append($("<button>"))
-        .attr({
+    $("#images").append($("<p>").attr("id", "more-button-p"));
+    $("#more-button-p").append($("<button>").attr({
             "type": "button",
+            "id": "more-button",
             "class": "btn btn-success more-button centered"
-        })
-        .text("Get More Pictures!")
-    );
+        }).text("Get More Pictures!"));
 
     // GIF CLICK EVENT HANDLER
     $(".gif").on("click", function() {
@@ -56,6 +58,19 @@ var generateGifs = function(object) {
             $(this).attr("data-state", "still");
             $(this).attr("src", $(this).attr("data-still"));
         }
+    });
+
+    // MORE BUTTON CLICK EVENT HANDLER
+    $(".more-button").on("click", function(){
+        let queryURL = getURL(currentTopic, currentOffset);
+        // Ajax GET method
+        $.ajax({
+            url: queryURL,
+            method: 'GET'
+        }).then(function(jsonData){
+            generateGifs(jsonData, true);
+        });
+        currentOffset += 10;
     });
 
 }
@@ -89,6 +104,7 @@ var generateButtons = function(){
 
     // BUTTON CLICK EVENT HANDLER
     $(".btn-info").on("click", function(){
+        currentTopic = $(this).attr("data-topic");
         let queryURL = getURL($(this).attr("data-topic"));
         // Ajax GET method
         $.ajax({

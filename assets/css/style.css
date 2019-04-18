@@ -21,4 +21,5 @@ body {
 
 .centered {
     margin: 1em auto;
+    display: block;
 }
