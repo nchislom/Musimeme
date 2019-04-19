@@ -7,23 +7,33 @@
 
     <!-- bootstrap css cdn -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- fontawesome cdn -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- google font selection -->
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+
+    <!-- custom css -->
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Musimeme - Beta</title>
+    <title>MusiMeme - Beta</title>
 </head>
 
 <body>
-    <header>Musimeme</header>
+    <header>
+        <h1 class="centered">
+            <span class="poiret bigger">MusiMeme</span>
+        </h1>
+    </header>
+
     <section id="search" class="spacedDiv">
         <p class="font-weight-bold">Add your favorite musical instrument</p>
         
         <div class="input-group input-group-lg">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">Instrument</span>
-            </div>
             <input id="search-box" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            <button id="submit" type="button" class="btn btn-primary">Add Instrument</button>
         </div>
 
-        <button id="submit" type="button" class="btn btn-primary">Add Instrument</button>
     </section>
 
     <section id="buttons" class="spacedDiv">

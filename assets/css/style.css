@@ -1,5 +1,24 @@
 body {
-    
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0; 
+    z-index: 500;
+}
+
+#buttons {
+    border-bottom: 1px dashed lightslategray;
+    /* position: -webkit-sticky;
+    position: sticky; */
+    text-align: center;
+    background-color: white;
+}
+
+#search {
 }
 
 .spacedDiv {
@@ -9,17 +28,40 @@ body {
 .btn-info { 
     margin-right: 1em;
     margin-bottom: 1em;
+    background-color: slategray;
+    border-color: slategray;
+    padding: 1em;
+}
+
+.btn-info:hover {
+    background-color: darkgoldenrod;
+    border-color: darkgoldenrod;
 }
 
 .btn-primary {
-    margin: 1em 0;
+    margin: 0 0 0 2em;
 }
 
 .card {
     margin: 1em;
 }
 
+header h1 {
+    color: white;
+    background-color: slategray;
+    padding: 1em;
+    margin: 0;
+}
 .centered {
-    margin: 1em auto;
+    /* margin: 1em auto; */
     display: block;
+    text-align: center;
+}
+
+.poiret {
+    font-family: 'Poiret One', cursive;
+}
+
+.bigger {
+    font-size: 1.2em;
 }
