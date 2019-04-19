@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: whitesmoke;
 }
 
 header {
@@ -11,14 +12,25 @@ header {
 }
 
 #buttons {
-    border-bottom: 1px dashed lightslategray;
+    border-bottom: 1px solid lightslategray;
     /* position: -webkit-sticky;
     position: sticky; */
     text-align: center;
-    background-color: white;
+    background-color: whitesmoke;
 }
 
-#search {
+#more-button {
+    padding: .7em .5em;
+    margin: 0 auto;
+    width: 75%;
+}
+
+#more-button-p {
+    width: 100%;
+}
+
+#images {
+    background-image: url('./assets/images/concrete-texture.png');
 }
 
 .spacedDiv {
@@ -30,12 +42,12 @@ header {
     margin-bottom: 1em;
     background-color: slategray;
     border-color: slategray;
-    padding: 1em;
 }
 
 .btn-info:hover {
-    background-color: darkgoldenrod;
-    border-color: darkgoldenrod;
+    background-color: #feda6a;
+    border-color: #feda6a;
+    color: darkgoldenrod;
 }
 
 .btn-primary {
@@ -43,7 +55,22 @@ header {
 }
 
 .card {
-    margin: 1em;
+    margin: 0;
+    border: 0;
+    background: transparent;
+}
+
+.card-img-top {
+    padding-top: .5em;
+}
+.card-body {
+    padding: .25em;
+}
+.card-text {
+    text-transform: uppercase;
+    color: slategray;
+    text-align: center;
+    font-size: .7em;
 }
 
 header h1 {
@@ -51,9 +78,9 @@ header h1 {
     background-color: slategray;
     padding: 1em;
     margin: 0;
+    line-height: .4em;
 }
 .centered {
-    /* margin: 1em auto; */
     display: block;
     text-align: center;
 }
@@ -63,5 +90,10 @@ header h1 {
 }
 
 .bigger {
-    font-size: 1.2em;
+    font-size: 1.5em;
+}
+
+.subtitle {
+    font-size: .5em;
+    margin: 0;
 }

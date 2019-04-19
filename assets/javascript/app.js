@@ -1,5 +1,5 @@
 // Globals
-var topics = ['trumpet', 'synthesizer', 'clarinet', 'violin', 'saxophone', 'tabla', 'lute', 'cello', 'drums', 'bass'];
+var topics = ['guitar', 'moog synthesizer', 'david bowie', 'violin', 'saxophone', '80s', 'lute', 'cello', 'drums', 'disco'];
 var apiKey = "0mPXs0Br3kSQLmpAzX0PK4FdfMO85PrK";
 var currentOffset = 10;
 var currentTopic = "";
@@ -23,7 +23,7 @@ var generateGifs = function(object, appendMore) {
 
         let newImage = $("<img>").attr({
             "src": object.data[i].images.fixed_height_small_still.url,
-            "class": "gif card-img-top",
+            "class": "gif card-img-top img-thumbnail",
             "alt": object.data[i].title,
             "data-state": "still",
             "data-still": object.data[i].images.fixed_height_small_still.url,
@@ -45,7 +45,7 @@ var generateGifs = function(object, appendMore) {
     $("#more-button-p").append($("<button>").attr({
             "type": "button",
             "id": "more-button",
-            "class": "btn btn-success more-button centered"
+            "class": "btn btn-primary more-button centered"
         }).text("Get More Pictures!"));
 
     // GIF CLICK EVENT HANDLER
@@ -84,7 +84,7 @@ var getURL = function(searchTerm, offset){
     URL += searchTerm.replace(/ /g, '+');           // Append searchTerm, replacing spaces with +'s
     URL += "&limit=10";                             // Append search Result Size
     if(offset){ URL += "&offset=" + offset; }       // Append offset of search results if requested
-    URL += "&rating=G";                             // Append rating
+    // URL += "&rating=G";                          // Append rating restriction if needed
     URL += "&lang=en";                              // Append language result filter
     return URL;
 }
