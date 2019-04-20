@@ -17,7 +17,7 @@ var generateGifs = function(object, appendMore) {
     for(let i = 0; i<object.data.length; i++) {
         
         let newCard = $("<div>").attr({
-            "class": "card col-sm-2",
+            "class": "card col-sm-6 col-md-4 col-lg-2",
             "style": "5rem"
         });
 
